@@ -5,6 +5,8 @@ const cors = require("cors");
 const nhanvienRoutes = require("./routes/nhanvienRoutes");
 const chamcongRoutes = require("./routes/chamcongRoutes");
 const bangluongRoutes = require("./routes/bangluongRoutes");
+const reportRouters = require("./routes/reportRouters");
+
 
 const app = express();
 
@@ -19,6 +21,7 @@ app.use(express.static("frontend"));
 app.use("/api/nhanvien", nhanvienRoutes);
 app.use("/api/chamcong", chamcongRoutes);
 app.use("/api/bangluong", bangluongRoutes);
+app.use("/api/report", reportRouters);
 
 // ✅ Khởi động server
 const PORT = 3000;

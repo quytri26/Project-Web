@@ -3,55 +3,102 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tính lương - Quản lý lương</title>
+    <title>Nhân viên - Quản lý lương</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="style.css" />
   </head>
-  <body class="bg-light">
-    <div class="container py-5">
-      <h2 class="mb-4">Form Tính Lương</h2>
-      <form class="card p-4 shadow-sm">
-        <div class="mb-3">
-          <label class="form-label">Tên nhân viên</label>
-          <input type="text" class="form-control" placeholder="Nguyễn Văn B" />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Số điện thoại</label>
-          <input type="text" class="form-control" placeholder="0987xxxxxx" />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Tháng</label>
-          <input type="month" class="form-control" />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">Lương cơ bản</label>
-          <input type="number" class="form-control" placeholder="10000000" />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">thưởng</label>
-          <input type="number" class="form-control" placeholder="2000000" />
-        </div>
-        <div class="mb-3">
-          <label class="form-label">phạt</label>
-          <input type="number" class="form-control" placeholder="500000" />
-        </div>
-        <button type="submit" class="btn btn-success">Tính lương</button>
-      </form>
 
-      <!-- Kết quả mẫu hiển thị sau khi tính -->
-      <div class="card p-4 shadow-sm mt-4">
-        <h5>Kết quả tính lương</h5>
-        <p><strong>Lương cơ bản:</strong> 10,000,000 ₫</p>
-        <p><strong>thưởng:</strong> 2,000,000 ₫</p>
-        <p><strong>phạt:</strong> 500,000 ₫</p>
-        <p>
-          <strong>Lương thực nhận:</strong>
-          <span class="text-success fw-bold">11,500,000 ₫</span>
-        </p>
+  <body class="bg-light">
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <div class="container">
+        <a class="navbar-brand fw-bold" href="index.html">Payroll System</a>
+        <div class="navbar-nav">
+          <a class="nav-link" href="index.html"
+            ><i class="bi bi-speedometer2"></i> Dashboard</a
+          >
+          <a class="nav-link" href="attendance.html"
+            ><i class="bi bi-calendar-check"></i> Chấm công</a
+          >
+          <a class="nav-link" href="payroll.html"
+            ><i class="bi bi-cash-coin"></i> Tính lương</a
+          >
+          <a class="nav-link" href="report.html"
+            ><i class="bi bi-bar-chart-line"></i> Báo cáo</a
+          >
+          <a class="nav-link active" href="employee.html"
+            ><i class="bi bi-person-plus"></i> Nhân viên</a
+          >
+        </div>
       </div>
+    </nav>
+    <div class="container py-5">
+        <h2 class="mb-4 text-center">Bảng lương nhân viên</h2>
+
+        <div class="card p-4 shadow-sm mb-4">
+            <div class="row g-3">
+                <div class="col-md-4">
+                <label class="form-label">Tháng tính lương</label>
+                <input type="month" id="thang" class="form-control" />
+                </div>
+
+                <div class="col-md-4">
+                <label class="form-label">ID hoặc tên nhân viên (bỏ trống để xem tất cả)</label>
+                <input
+                    type="text"
+                    id="nhanvien"
+                    class="form-control"
+                    placeholder="VD: 1 hoặc Nguyễn Văn A"
+                />
+                </div>
+
+                <div class="col-md-4 d-flex align-items-end">
+                <button id="btnTinh" class="btn btn-success w-100">
+                    🧮 Tính lương
+                </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="ketqua" class="card p-4 shadow-sm d-none">
+            <h5 class="mb-3">
+                Kết quả tính lương tháng <span id="labelThang"></span>
+            </h5>
+
+            <table class="table table-bordered mt-2">
+                <thead class="table-light">
+                <tr>
+                    <th>Hành động</th>
+                    <th>ID</th>
+                    <th>Tên nhân viên</th>
+                    <th>Năm</th>
+                    <th>Tháng</th>
+                    <th>Tổng giờ làm</th>
+                    <th>Thưởng</th>
+                    <th>Phạt</th>
+                    <th>Tổng lương</th>
+                    <th>Trạng thái</th>
+                </tr>
+                </thead>
+                <tbody id="bangLuong"></tbody>
+            </table>
+
+            <div class="d-flex justify-content-end mt-3">
+                <button id="btnLuuAll" class="btn btn-primary">
+                💾 Lưu tất cả bảng lương
+                </button>
+            </div>
+        </div>
     </div>
-  </body>
+
+  <script src="payroll.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>
